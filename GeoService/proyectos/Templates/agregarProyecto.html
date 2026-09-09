@@ -18,7 +18,9 @@
         <div class="card" style="width: 18rem;" id="formulario">
             <div class="card-body">
                 <h3 style="text-align: center;">Agregar Proyecto</h3>
-                <form action="">
+    
+                <form action="{% url 'guardarProyecto' %}" method="post">
+                    {% csrf_token %}
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Año</label>
                         <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Año">
