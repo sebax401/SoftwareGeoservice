@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <title>Geoservice</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <!-- Barra de navegación -->
+        {% include 'nav.html' %}
+
+        <!-- formulario para agregar un proyecto -->
+        <div class="card" style="width: 18rem;" id="formulario">
+            <div class="card-body">
+                <h3 style="text-align: center;">Agregar Proyecto</h3>
+                <form action="">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Año</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Año">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nombre del proyecto</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre del proyecto">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-info">Agregar Proyecto</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
