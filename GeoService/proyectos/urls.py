@@ -5,6 +5,6 @@ urlpatterns = [
     path('', views.proyectos, name='proyectos'),
     path('agregarProyecto/', views.agregarProyecto, name='agregarProyecto'),
     path('crud_proyectos/', views.crud_proyectos, name='crud_proyectos'),
-    path("agregarProyecto/guardar/", views.guardarProyecto, name="guardarProyecto"),
-
+    path("guardarProyecto/", views.guardarProyecto, name="guardarProyecto"),
+    path('detalles/<int:proyecto_id>/', views.detalles, name='detalles'),
 ]

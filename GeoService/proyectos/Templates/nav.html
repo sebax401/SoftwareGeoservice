@@ -12,15 +12,29 @@
                                 Años
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">2000</a></li>
+                                {% for año in años %}
+                                    <li><a class="dropdown-item" href="#">{{ año }}</a></li>
+                                {% empty %}
+                                    <li><span class="dropdown-item-text">No hay años</span></li>
+                                {% endfor %}
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"/>
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
+                <form class="d-flex" role="search" method="GET" action="{% url 'proyectos' %}">
+                    <input 
+                        class="form-control me-2" 
+                        type="search" 
+                        name="buscar"
+                        placeholder="Buscar"
+                        value="{{ buscar }}"
+                        aria-label="Buscar"
+                    >
+
+                    <button class="btn btn-outline-success" type="submit">
+                        Buscar
+                    </button>
+                </form>
         </div>
     </nav>

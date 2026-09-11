@@ -13,5 +13,45 @@
 
 <body>
     {% include 'nav.html' %}
+    <div class="container mt-4">
+        <div class="row g-4">
+
+            {% for proyecto in proyectos %}
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ proyecto.nombre }}
+                        </h5>
+
+                        <p class="card-text">
+                            <strong>Año:</strong> {{ proyecto.año }}
+                        </p>
+
+                        <p class="card-text">
+                            <strong>Estado:</strong> {{ proyecto.estado }}
+                        </p>
+
+                        <a href="{% url 'detalles' proyecto.id %}" class="btn btn-primary">
+                            Ver detalles
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            {% empty %}
+
+            <div class="col-12">
+                <p>No hay proyectos registrados.</p>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
 </body>
 </html>
