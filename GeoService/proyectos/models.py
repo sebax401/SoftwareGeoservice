@@ -5,10 +5,10 @@ from django.db import models
 class proyecto(models.Model):
 
     ESTADOS = [
-        ('ejecucion', 'En ejecución'),
-        ('progreso', 'En progreso'),
-        ('terminado', 'Terminado'),
-        ('cancelado', 'Cancelado'),
+        ('Ejecucion', 'En ejecución'),
+        ('Progreso', 'En progreso'),
+        ('Terminado', 'Terminado'),
+        ('Cancelado', 'Cancelado'),
     ]
 
     id = models.AutoField(primary_key=True)

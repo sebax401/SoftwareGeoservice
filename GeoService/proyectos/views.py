@@ -2,26 +2,38 @@ from django.http import HttpResponse
 from django.template  import loader
 from django.shortcuts import render
 from .models import proyecto
+from django.db.models import Q
 
 # Create your views here.
 
 
 def proyectos(request):
+
+    buscar = request.GET.get('buscar', '')
+    año = request.GET.get('año', '')
+
     proyectos = proyecto.objects.all()
 
-    años = proyecto.objects.values_list('año', flat=True).distinct().order_by('año')
-    buscar = request.GET.get('buscar')
+    # Filtro de búsqueda
     if buscar:
-        proyectos = proyecto.objects.filter(
-            nombre__icontains=buscar
+        proyectos = proyectos.filter(
+            Q(nombre__icontains=buscar) |
+            Q(año__icontains=buscar) |
+            Q(estado__icontains=buscar)
         )
-    else:
-        proyectos = proyecto.objects.all()
+
+    # Filtro por año
+    if año:
+        proyectos = proyectos.filter(año=año)
+
+    # Obtener los años existentes
+    años = proyecto.objects.values_list('año', flat=True).distinct().order_by('-año')
 
     return render(request, 'index.html', {
         'proyectos': proyectos,
+        'buscar': buscar,
         'años': años,
-        'buscar': buscar
+        'año_seleccionado': año
     })
 
 def detalles(request, proyecto_id):

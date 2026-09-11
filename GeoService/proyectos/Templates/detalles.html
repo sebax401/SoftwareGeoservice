@@ -14,52 +14,39 @@
 <body>
     {% include 'nav.html' %}
 
-{% block content %}
+    {% block content %}
 
-<div class="detalle-container">
-
-    <div class="detalle-card">
-
-        <div class="detalle-header">
-            <h1>{{ proyecto.nombre }}</h1>
-            <span class="estado estado-{{ proyecto.estado }}">
-                {{ proyecto.estado }}
-            </span>
-        </div>
-
-        <hr>
-
-        <div class="detalle-info">
-
-            <div class="info-item">
-                <span class="info-label">Descripción</span>
-                <p>{{ proyecto.descripcion }}</p>
+    <div class="detalle-container">
+        <div class="detalle-card">
+            <div class="detalle-header">
+                <h1>{{ proyecto.nombre }}</h1>
+                <span class="estado estado-{{ proyecto.estado }}">
+                    {{ proyecto.estado }}
+                </span>
             </div>
-
-            <div class="info-item">
-                <span class="info-label">Año</span>
-                <p>{{ proyecto.año }}</p>
+            <hr>
+            <div class="detalle-info">
+                <div class="info-item">
+                    <span class="info-label">Descripción</span>
+                    <p>{{ proyecto.descripcion }}</p>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Año</span>
+                    <p>{{ proyecto.año }}</p>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Estado</span>
+                    <p>{{ proyecto.estado }}</p>
+                </div>
             </div>
-
-            <div class="info-item">
-                <span class="info-label">Estado</span>
-                <p>{{ proyecto.estado }}</p>
+            <div class="detalle-footer">
+                <a href="{% url 'proyectos' %}" class="btn-volver">
+                    ← Volver a proyectos
+                </a>
             </div>
-
         </div>
-
-        <div class="detalle-footer">
-
-            <a href="{% url 'proyectos' %}" class="btn-volver">
-                ← Volver a proyectos
-            </a>
-
-        </div>
-
     </div>
 
-</div>
-
-{% endblock %}
+    {% endblock %}
 </body>
 </html>

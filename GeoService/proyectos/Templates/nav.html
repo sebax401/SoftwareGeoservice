@@ -13,9 +13,17 @@
                             </a>
                             <ul class="dropdown-menu">
                                 {% for año in años %}
-                                    <li><a class="dropdown-item" href="#">{{ año }}</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'proyectos' %}?año={{ año }}">
+                                            {{ año }}
+                                        </a>
+                                    </li>
                                 {% empty %}
-                                    <li><span class="dropdown-item-text">No hay años</span></li>
+                                    <li>
+                                        <span class="dropdown-item-text">
+                                            No hay años disponibles
+                                        </span>
+                                    </li>
                                 {% endfor %}
                             </ul>
                         </li>
