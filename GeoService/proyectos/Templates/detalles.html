@@ -30,13 +30,29 @@
                     <span class="info-label">Descripción</span>
                     <p>{{ proyecto.descripcion }}</p>
                 </div>
+
                 <div class="info-item">
                     <span class="info-label">Año</span>
                     <p>{{ proyecto.año }}</p>
                 </div>
+
                 <div class="info-item">
                     <span class="info-label">Estado</span>
                     <p>{{ proyecto.estado }}</p>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Numero de compra/orden</span>
+                    <p>°{{ proyecto.num_compra }}</p>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Monto Actual</span>
+                    <p>$ {{ proyecto.monto }}</p>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Monto Final</span>
+                    <p>$ {{ proyecto.monto_final }}</p>
                 </div>
             </div>
             <div class="detalle-footer">

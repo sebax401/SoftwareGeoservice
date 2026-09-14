@@ -16,6 +16,9 @@ class proyecto(models.Model):
     descripcion = models.TextField()
     año = models.IntegerField()
     estado = models.CharField(max_length=50, choices=ESTADOS)
+    num_compra = models.IntegerField()
+    monto = models.IntegerField(default=0)
+    monto_final = models.IntegerField(default=0)
 
     def __str__(self):
         return self.nombre

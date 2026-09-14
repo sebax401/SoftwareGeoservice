@@ -39,6 +39,18 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Numero de orden/compra</label>
+                        <input type="text" class="form-control" required id="exampleFormControlInput1" placeholder="Numero de orden/compra" name="num_compra" value="{{ proyecto.num_compra }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Monto Actual</label>
+                        <input type="number" class="form-control" required id="exampleFormControlInput1" placeholder="Monto" name="monto" value="{{ proyecto.monto }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Monto</label>
+                        <input type="text" class="form-control" required id="exampleFormControlInput1" placeholder="Monto" name="monto_final" value="{{ proyecto.monto_final }}">
+                    </div>
+                    <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" required rows="3" name="descripcion">{{ proyecto.descripcion }}</textarea>
                     </div>

@@ -7,15 +7,7 @@
         </a>
 
         <!-- Botón hamburguesa para celular -->
-        <button 
-            class="navbar-toggler" 
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Mostrar menú"
-        >
+        <button class="navbar-toggler" type="button"data-bs-toggle="collapse"data-bs-target="#navbarNavDropdown"aria-controls="navbarNavDropdown"aria-expanded="false"aria-label="Mostrar menú">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -38,79 +30,62 @@
                 <!-- Años -->
                 <li class="nav-item dropdown">
 
-                    <a 
-                        class="nav-link dropdown-toggle" 
-                        href="#" 
-                        role="button" 
-                        data-bs-toggle="dropdown" 
-                        aria-expanded="false"
-                    >
-                        Años
-                    </a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Años</a>
 
                     <ul class="dropdown-menu">
-
                         <li>
-                            <a 
-                                class="dropdown-item" 
-                                href="{% url 'proyectos' %}"
-                            >
-                                Todos los años
-                            </a>
+                            <a class="dropdown-item" href="{% url 'proyectos' %}">Todos los años</a>
                         </li>
 
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
                         {% for año in años %}
-
                             <li>
-                                <a 
-                                    class="dropdown-item" 
-                                    href="{% url 'proyectos' %}?año={{ año }}"
-                                >
-                                    {{ año }}
-                                </a>
+                                <a class="dropdown-item" href="{% url 'proyectos' %}?año={{ año }}">{{ año }}</a>
                             </li>
-
                         {% empty %}
-
                             <li>
                                 <span class="dropdown-item-text">
                                     No hay años disponibles
                                 </span>
                             </li>
-
                         {% endfor %}
-
                     </ul>
                 </li>
 
+                <!-- Estado -->
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Estados</a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'proyectos' %}">Todos los estado</a>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        {% for estado in estados %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'proyectos' %}?estado={{ estado }}">{{ estado }}</a>
+                            </li>
+                        {% empty %}
+                            <li>
+                                <span class="dropdown-item-text">
+                                    No hay estado disponibles
+                                </span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
             </ul>
 
             <!-- Buscador -->
-            <form 
-                class="d-flex" 
-                role="search" 
-                method="GET" 
-                action="{% url 'proyectos' %}"
-            >
-                <input 
-                    class="form-control me-2" 
-                    type="search" 
-                    name="buscar" 
-                    placeholder="Buscar" 
-                    value="{{ buscar }}" 
-                    aria-label="Buscar"
-                >
-
-                <button 
-                    class="btn btn-outline-success" 
-                    type="submit"
-                >
-                    Buscar
-                </button>
+            <form class="d-flex" role="search" method="GET" action="{% url 'proyectos' %}">
+                <input class="form-control me-2" type="search" name="buscar" placeholder="Buscar" value="{{ buscar }}" aria-label="Buscar">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
 
         </div>
