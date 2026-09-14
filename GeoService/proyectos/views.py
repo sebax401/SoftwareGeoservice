@@ -55,9 +55,47 @@ def detalles(request, proyecto_id):
         'años': años
     })
 
+#Agrega un proyecto a la base de datos
 def agregarProyecto(request):
     años = proyecto.objects.values_list('año', flat=True).distinct().order_by('año')
     return render(request, 'agregarProyecto.html', {'años': años})
+
+#Elmina un proyecto de la base de datos
+def eliminar_proyecto(request, proyecto_id):
+    context = {}
+    try:
+        proyecto_obj = proyecto.objects.get(id=proyecto_id)
+        proyecto_obj.delete()
+        context['mensaje'] = 'Proyecto eliminado correctamente.'
+    except proyecto.DoesNotExist:
+        context['mensaje'] = 'El proyecto no existe.'
+    return render(request, 'index.html', context)
+
+
+#edita los proyectos
+def editar_proyecto(request, proyecto_id):
+    años = proyecto.objects.values_list('año', flat=True).distinct().order_by('año')
+
+    if proyecto_id != "":
+        proyecto_obj = proyecto.objects.get(id=proyecto_id)
+
+    return render(request, 'editarProyecto.html', {'proyecto': proyecto_obj, 'años': años})
+
+def actualizar_proyecto(request, proyecto_id):
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        descripcion = request.POST.get('descripcion')
+        año = request.POST.get('año')
+        estado = request.POST.get('estado')
+
+        proyecto_obj = proyecto.objects.get(id=proyecto_id)
+        proyecto_obj.nombre = nombre
+        proyecto_obj.descripcion = descripcion
+        proyecto_obj.año = año
+        proyecto_obj.estado = estado
+        proyecto_obj.save()
+
+    return render(request, 'editarProyecto.html', {'proyecto': proyecto_obj})
 
 def guardarProyecto(request):
     años = proyecto.objects.values_list('año', flat=True).distinct().order_by('año')

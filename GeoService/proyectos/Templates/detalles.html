@@ -43,12 +43,17 @@
                 <a href="{% url 'proyectos' %}" class="btn-volver">
                     ← Volver a proyectos
                 </a>
+                <a href="{% url 'editar_proyecto' proyecto.id %}" class="btn btn-info">
+                    Editar Proyecto
+                </a>
+                <a href="{% url 'eliminar_proyecto' proyecto.id %}" class="btn btn-danger">
+                    Eliminar Proyecto
+                </a>
             </div>
         </div>
     </div>
 
     {% endblock %}
-
     <script>
         const proyectoId = "{{ proyecto.id }}";
 

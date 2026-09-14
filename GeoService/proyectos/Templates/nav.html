@@ -1,48 +1,119 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a href="{% url 'proyectos' %}"><h2>GeoService</h2></a>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <div class="container-fluid">
-                    <ul class="navbar-nav" >
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'agregarProyecto' %}" id="botonesA">Agregar</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Años
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="{% url 'proyectos' %}">Todos los años</a>
-                                </li>
-                                <li><hr class="dropdown-divider"></li>
-                                {% comment %} Iterar sobre los años y crear enlaces para cada uno {% endcomment %}
-                                {% comment %} Si no hay años disponibles, mostrar un mensaje {% endcomment %}
-                                {% comment %} Se asume que 'años' es una lista de años disponibles en el contexto {% endcomment %}
-                                {% for año in años %}
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'proyectos' %}?año={{ año }}">
-                                            {{ año }}
-                                        </a>
-                                    </li>
-                                {% empty %}
-                                    <li>
-                                        <span class="dropdown-item-text">
-                                            No hay años disponibles
-                                        </span>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-                <form class="d-flex" role="search" method="GET" action="{% url 'proyectos' %}">
-                    <input class="form-control me-2" type="search" name="buscar" placeholder="Buscar" value="{{ buscar }}" aria-label="Buscar">
+    <div class="container-fluid">
 
-                <button class="btn btn-outline-success" type="submit">
+        <!-- Logo -->
+        <a href="{% url 'proyectos' %}" class="navbar-brand">
+            <h2 class="mb-0">GeoService</h2>
+        </a>
+
+        <!-- Botón hamburguesa para celular -->
+        <button 
+            class="navbar-toggler" 
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Mostrar menú"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menú -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+            <ul class="navbar-nav me-auto">
+
+                <!-- Agregar -->
+                <li class="nav-item">
+                    <a 
+                        class="nav-link active" 
+                        href="{% url 'agregarProyecto' %}" 
+                        id="botonesA"
+                    >
+                        Agregar
+                    </a>
+                </li>
+
+                <!-- Años -->
+                <li class="nav-item dropdown">
+
+                    <a 
+                        class="nav-link dropdown-toggle" 
+                        href="#" 
+                        role="button" 
+                        data-bs-toggle="dropdown" 
+                        aria-expanded="false"
+                    >
+                        Años
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a 
+                                class="dropdown-item" 
+                                href="{% url 'proyectos' %}"
+                            >
+                                Todos los años
+                            </a>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        {% for año in años %}
+
+                            <li>
+                                <a 
+                                    class="dropdown-item" 
+                                    href="{% url 'proyectos' %}?año={{ año }}"
+                                >
+                                    {{ año }}
+                                </a>
+                            </li>
+
+                        {% empty %}
+
+                            <li>
+                                <span class="dropdown-item-text">
+                                    No hay años disponibles
+                                </span>
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+                </li>
+
+            </ul>
+
+            <!-- Buscador -->
+            <form 
+                class="d-flex" 
+                role="search" 
+                method="GET" 
+                action="{% url 'proyectos' %}"
+            >
+                <input 
+                    class="form-control me-2" 
+                    type="search" 
+                    name="buscar" 
+                    placeholder="Buscar" 
+                    value="{{ buscar }}" 
+                    aria-label="Buscar"
+                >
+
+                <button 
+                    class="btn btn-outline-success" 
+                    type="submit"
+                >
                     Buscar
                 </button>
-        </form>
+            </form>
+
+        </div>
+
     </div>
 </nav>

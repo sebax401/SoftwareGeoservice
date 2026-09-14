@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoServices</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    {% if proyecto %}
+
+    <div class="card" style="width: 18rem;" id="formulario">
+        <div class="card-body">
+            <h3 style="text-align: center;">Editar Proyecto</h3>
+                <form action="{% url 'actualizar_proyecto' proyecto.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Año</label>
+                        <input type="number" class="form-control" required id="exampleFormControlInput1" placeholder="Año" name="año" value="{{ proyecto.año }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nombre del proyecto</label>
+                        <input type="text" class="form-control" required id="exampleFormControlInput1" placeholder="Nombre del proyecto" name="nombre" value="{{ proyecto.nombre }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Estado:</label>
+                        <select class="form-select" aria-label="Default select example" name="estado" value="{{ proyecto.estado }}" required>
+                            <option selected>---</option>
+                            <option value="Ejecucion">En ejecución</option>
+                            <option value="Progreso">En progreso</option>
+                            <option value="Terminado">Terminado</option>
+                            <option value="Cancelado">Cancelado</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" required rows="3" name="descripcion">{{ proyecto.descripcion }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-info">Guardar Cambios</button>
+                    <a href="{% url 'proyectos' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+        </div>
+    </div>
+    {% else %}
+        <p>Proyecto no encontrado.</p>
+    {% endif %}
+</body>
+</html>
