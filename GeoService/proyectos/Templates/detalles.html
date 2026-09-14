@@ -15,6 +15,7 @@
     {% include 'nav.html' %}
 
     {% block content %}
+    {% load filtro %}
 
     <div class="detalle-container">
         <div class="detalle-card">
@@ -43,16 +44,16 @@
 
                 <div class="info-item">
                     <span class="info-label">Numero de compra/orden</span>
-                    <p>°{{ proyecto.num_compra }}</p>
+                    <p> {{ proyecto.num_compra }}</p>
                 </div>
 
                 <div class="info-item">
                     <span class="info-label">Monto Actual</span>
-                    <p>$ {{ proyecto.monto }}</p>
+                    <p>$ {{ proyecto.monto|formato_monto }}</p>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Monto Final</span>
-                    <p>$ {{ proyecto.monto_final }}</p>
+                    <p>$ {{ proyecto.monto_final|formato_monto }}</p>
                 </div>
             </div>
             <div class="detalle-footer">

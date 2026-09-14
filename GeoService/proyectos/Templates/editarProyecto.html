@@ -18,45 +18,45 @@
     <div class="card" style="width: 18rem;" id="formulario">
         <div class="card-body">
             <h3 style="text-align: center;">Editar Proyecto</h3>
-                <form action="{% url 'actualizar_proyecto' proyecto.id %}" method="post">
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Año</label>
-                        <input type="number" class="form-control" required id="exampleFormControlInput1" placeholder="Año" name="año" value="{{ proyecto.año }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nombre del proyecto</label>
-                        <input type="text" class="form-control" required id="exampleFormControlInput1" placeholder="Nombre del proyecto" name="nombre" value="{{ proyecto.nombre }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Estado:</label>
-                        <select class="form-select" aria-label="Default select example" name="estado" value="{{ proyecto.estado }}" required>
-                            <option selected>---</option>
-                            <option value="Ejecucion">En ejecución</option>
-                            <option value="Progreso">En progreso</option>
-                            <option value="Terminado">Terminado</option>
-                            <option value="Cancelado">Cancelado</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Numero de orden/compra</label>
-                        <input type="text" class="form-control" required id="exampleFormControlInput1" placeholder="Numero de orden/compra" name="num_compra" value="{{ proyecto.num_compra }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Monto Actual</label>
-                        <input type="number" class="form-control" required id="exampleFormControlInput1" placeholder="Monto" name="monto" value="{{ proyecto.monto }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Monto</label>
-                        <input type="text" class="form-control" required id="exampleFormControlInput1" placeholder="Monto" name="monto_final" value="{{ proyecto.monto_final }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" required rows="3" name="descripcion">{{ proyecto.descripcion }}</textarea>
-                    </div>
-                    <button type="submit" class="btn btn-info">Guardar Cambios</button>
-                    <a href="{% url 'proyectos' %}" class="btn btn-secondary">Cancelar</a>
-                </form>
+            <form action="{% url 'actualizar_proyecto' proyecto.id %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Año</label>
+                    <input type="number" class="form-control" required id="exampleFormControlInput1" placeholder="Año" name="año" value="{{ proyecto.año }}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nombre del proyecto</label>
+                    <input type="text" class="form-control" required id="exampleFormControlInput1" placeholder="Nombre del proyecto" name="nombre" value="{{ proyecto.nombre }}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Estado:</label>
+                    <select class="form-select" aria-label="Default select example" name="estado" value="{{ proyecto.estado }}" required>
+                        <option selected>---</option>
+                        <option value="Ejecucion">En ejecución</option>
+                        <option value="Progreso">En progreso</option>
+                        <option value="Terminado">Terminado</option>
+                        <option value="Cancelado">Cancelado</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Numero de orden/compra</label>
+                    <input type="text" class="form-control" required id="exampleFormControlInput1" placeholder="Numero de orden/compra" name="num_compra" value="{{ proyecto.num_compra }}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Monto Actual</label>
+                    <input type="number" class="form-control" required id="exampleFormControlInput1" placeholder="Monto" name="monto" value="{{ proyecto.monto }}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Monto</label>
+                    <input type="text" class="form-control" required id="exampleFormControlInput1" placeholder="Monto" name="monto_final" value="{{ proyecto.monto_final }}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" required rows="3" name="descripcion">{{ proyecto.descripcion }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-info">Guardar Cambios</button>
+                <a href="{% url 'proyectos' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
         </div>
     </div>
     {% else %}
