@@ -3,8 +3,17 @@ from django.template  import loader
 from django.shortcuts import render
 from .models import proyecto
 from django.db.models import Q
+from django.http import JsonResponse
 
 # Create your views here.
+
+def comprobar_proyecto(request, id):
+
+    existe = proyecto.objects.filter(id=id).exists()
+
+    return JsonResponse({
+        'existe': existe
+    })
 
 
 def proyectos(request):

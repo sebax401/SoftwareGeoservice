@@ -12,6 +12,13 @@
                                 Años
                             </a>
                             <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'proyectos' %}">Todos los años</a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                {% comment %} Iterar sobre los años y crear enlaces para cada uno {% endcomment %}
+                                {% comment %} Si no hay años disponibles, mostrar un mensaje {% endcomment %}
+                                {% comment %} Se asume que 'años' es una lista de años disponibles en el contexto {% endcomment %}
                                 {% for año in años %}
                                     <li>
                                         <a class="dropdown-item" href="{% url 'proyectos' %}?año={{ año }}">
@@ -31,18 +38,11 @@
                 </div>
             </div>
                 <form class="d-flex" role="search" method="GET" action="{% url 'proyectos' %}">
-                    <input 
-                        class="form-control me-2" 
-                        type="search" 
-                        name="buscar"
-                        placeholder="Buscar"
-                        value="{{ buscar }}"
-                        aria-label="Buscar"
-                    >
+                    <input class="form-control me-2" type="search" name="buscar" placeholder="Buscar" value="{{ buscar }}" aria-label="Buscar">
 
-                    <button class="btn btn-outline-success" type="submit">
-                        Buscar
-                    </button>
-                </form>
-        </div>
-    </nav>
+                <button class="btn btn-outline-success" type="submit">
+                    Buscar
+                </button>
+        </form>
+    </div>
+</nav>

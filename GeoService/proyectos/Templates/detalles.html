@@ -48,5 +48,29 @@
     </div>
 
     {% endblock %}
+
+    <script>
+        const proyectoId = "{{ proyecto.id }}";
+
+        setInterval(() => {
+
+            fetch(`/proyecto/${proyectoId}/existe/`)
+                .then(response => response.json())
+                .then(data => {
+
+                    if (!data.existe) {
+
+                        alert("⚠️ Este proyecto ha sido eliminado por otro usuario.");
+
+                        window.location.href = "{% url 'proyectos' %}";
+                    }
+
+                })
+                .catch(error => {
+                    console.error("Error comprobando el proyecto:", error);
+                });
+
+        }, 3000);
+    </script>
 </body>
 </html>
